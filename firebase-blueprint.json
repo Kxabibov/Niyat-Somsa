@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "A single menu item (samsa) in the bakery.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the samsa." },
+        "price": { "type": "string", "description": "The price of the samsa (e.g., '15,000 UZS')." },
+        "category": { "type": "string", "enum": ["beef", "chicken", "pumpkin", "greens"], "description": "The category of the samsa." },
+        "description": { "type": "string", "description": "A short description of the samsa." },
+        "image": { "type": "string", "description": "The URL of the samsa image." },
+        "rating": { "type": "number", "description": "The rating of the samsa." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "The timestamp when the item was created." }
+      },
+      "required": ["name", "price", "category", "image"]
+    },
+    "GalleryImage": {
+      "title": "GalleryImage",
+      "description": "An image for the bakery gallery.",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "description": "The URL of the image." },
+        "title": { "type": "string", "description": "The title or caption for the image." },
+        "date": { "type": "string", "format": "date", "description": "The date the photo was taken." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "The timestamp when the image was added." }
+      },
+      "required": ["url", "title", "date"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "A message sent via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The sender's name." },
+        "email": { "type": "string", "format": "email", "description": "The sender's email address." },
+        "message": { "type": "string", "description": "The message content." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "The timestamp when the message was sent." }
+      },
+      "required": ["name", "email", "message"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "A user profile for authentication and roles.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The Firebase Auth UID." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "The user's role." }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/menu/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Collection of menu items."
+    },
+    "/gallery/{imageId}": {
+      "schema": "GalleryImage",
+      "description": "Collection of gallery images."
+    },
+    "/contacts/{messageId}": {
+      "schema": "ContactMessage",
+      "description": "Collection of contact messages."
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection of user profiles."
+    }
+  }
+}

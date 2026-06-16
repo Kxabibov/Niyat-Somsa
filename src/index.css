@@ -1,0 +1,488 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Flokison';
+  src: url('/fonts/Flokison.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Design tokens ─── */
+@theme {
+  --color-primary: #1A1614;
+  /* near-black warm */
+  --color-secondary: #F6F3EE;
+  /* warm paper */
+  --color-accent: #C8A96E;
+  /* warm gold */
+  --color-accent-light: #E8D5AC;
+  /* pale gold */
+  --color-stone: #7A736C;
+  /* mid stone */
+  --color-surface: #FDFCFA;
+  /* off-white surface */
+  --font-traditional: "Georgia", serif;
+}
+
+/* ─── Base ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #1A1614;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════ */
+
+/* ── Primary: dark warm luxury slide-in ── */
+.glass-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FDFCFA;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(26, 22, 20, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+/* Base background */
+.glass-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1A1614;
+  z-index: -2;
+  border-radius: inherit;
+  transition: opacity 0.35s ease;
+}
+
+/* Slide-in gold hover background */
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.3, 1, 0.3, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.glass-btn:hover::before {
+  transform: translateX(0);
+}
+
+.glass-btn:hover {
+  transform: translateY(-2px);
+  color: #1A1614;
+  box-shadow: 
+    0 10px 30px rgba(200, 169, 110, 0.35),
+    0 0 0 1px rgba(200, 169, 110, 0.2);
+  border-color: rgba(200, 169, 110, 0.3);
+}
+
+.glass-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ── Accent: warm gold luxury slide-in ── */
+.glass-btn-accent {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1A1614;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(200, 169, 110, 0.30);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+/* Base background */
+.glass-btn-accent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  z-index: -2;
+  border-radius: inherit;
+  transition: opacity 0.35s ease;
+}
+
+/* Slide-in dark hover background */
+.glass-btn-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1A1614;
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.3, 1, 0.3, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.glass-btn-accent:hover::before {
+  transform: translateX(0);
+}
+
+.glass-btn-accent:hover {
+  transform: translateY(-2px);
+  color: #FDFCFA;
+  box-shadow: 
+    0 10px 30px rgba(26, 22, 20, 0.3),
+    0 0 0 1px rgba(26, 22, 20, 0.2);
+  border-color: rgba(26, 22, 20, 0.15);
+}
+
+.glass-btn-accent:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ── Ghost: light luxury slide-in ── */
+.ghost-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1A1614;
+  background: transparent;
+  border: 1.5px solid rgba(26, 22, 20, 0.14);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+/* Base background */
+.ghost-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(253, 252, 250, 0.6);
+  z-index: -2;
+  border-radius: inherit;
+  transition: opacity 0.35s ease;
+}
+
+/* Slide-in gold hover background */
+.ghost-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.3, 1, 0.3, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.ghost-btn:hover::before {
+  transform: translateX(0);
+}
+
+.ghost-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(200, 169, 110, 0.55);
+  color: #1A1614;
+  box-shadow:
+    0 10px 30px rgba(200, 169, 110, 0.25),
+    0 0 0 1px rgba(200, 169, 110, 0.15);
+}
+
+.ghost-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ════════════════════════════════════════
+   CARD HOVER LIFT
+════════════════════════════════════════ */
+.hover-lift {
+  transition:
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: 
+    0 30px 60px rgba(26, 22, 20, 0.12), 
+    0 0 0 2px rgba(200, 169, 110, 0.25);
+}
+
+/* ════════════════════════════════════════
+   UZBEK ORNAMENT PATTERNS & ANIMATIONS
+════════════════════════════════════════ */
+.uz-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C8A96E' stroke-opacity='0.06' stroke-width='0.8'%3E%3Cpolygon points='40,4 54,14 60,30 54,46 40,56 26,46 20,30 26,14'/%3E%3Cpolygon points='40,12 51,20 55,32 51,44 40,52 29,44 25,32 29,20'/%3E%3Ccircle cx='40' cy='30' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+@keyframes uz-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-20px) rotate(2.5deg);
+  }
+
+  66% {
+    transform: translateY(-9px) rotate(-1.2deg);
+  }
+}
+
+@keyframes uz-drift {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(16px) rotate(4deg);
+  }
+}
+
+@keyframes uz-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes uz-bloom {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.05;
+  }
+
+  50% {
+    transform: scale(1.07) rotate(6deg);
+    opacity: 0.10;
+  }
+}
+
+.uz-float {
+  animation: uz-float 9s ease-in-out infinite;
+}
+
+.uz-drift {
+  animation: uz-drift 12s ease-in-out infinite;
+}
+
+.uz-spin-slow {
+  animation: uz-spin-slow 70s linear infinite;
+}
+
+.uz-bloom {
+  animation: uz-bloom 10s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════
+   IMAGE HOVER
+════════════════════════════════════════ */
+.img-hover img {
+  transition: filter 0.55s ease, transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.group:hover .img-hover img {
+  filter: brightness(1.06) saturate(1.04);
+  transform: scale(1.05);
+}
+
+/* ─── Misc utility ─── */
+.uz-border {
+  border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none' stroke='%23C8A96E' stroke-width='2'/%3E%3Cpath d='M10 10l80 80M90 10L10 90' stroke='%23C8A96E' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E") 30 stretch;
+}
+
+/* Fade-in for sections */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Gautammsharma Grid Background styles */
+.grid-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: linear-gradient(to right, rgba(26, 22, 20, 0.14) 2px, transparent 2px),
+                    linear-gradient(to bottom, rgba(26, 22, 20, 0.14) 2px, transparent 2px);
+  background-size: 45px 45px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 0%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 0%, #000 70%, transparent 100%);
+  animation: grid-move 28s linear infinite;
+}
+
+@keyframes grid-move {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 45px 45px;
+  }
+}
+
+/* Override body with a beautiful milky tone */
+body {
+  background-color: #FAF7F2 !important;
+}
+
+/* Playful button icon animations on hover */
+.icon-1, .icon-2, .icon-3 {
+  position: absolute;
+  top: -5px;
+  height: auto;
+  transition: all 0.5s ease-in-out;
+  opacity: 0.85;
+}
+.icon-1 {
+  right: 15px;
+  width: 18px;
+  transform-origin: 0 0;
+  transform: rotate(10deg);
+}
+.icon-2 {
+  left: 35px;
+  width: 9px;
+  transform-origin: 50% 0;
+  transform: rotate(10deg);
+}
+.icon-3 {
+  left: 15px;
+  width: 13px;
+  transform-origin: 50% 0;
+  transform: rotate(-5deg);
+}
+button:hover .icon-1, a:hover .icon-1 {
+  animation: slay-1 3s cubic-bezier(0.52, 0, 0.58, 1) infinite;
+}
+button:hover .icon-2, a:hover .icon-2 {
+  animation: slay-2 3s cubic-bezier(0.52, 0, 0.58, 1) 0.5s infinite;
+}
+button:hover .icon-3, a:hover .icon-3 {
+  animation: slay-3 2s cubic-bezier(0.52, 0, 0.58, 1) 0.5s infinite;
+}
+@keyframes slay-1 {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-5deg); }
+}
+@keyframes slay-2 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+@keyframes slay-3 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+/* ─── Lenis Smooth Scrolling CSS reset ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
