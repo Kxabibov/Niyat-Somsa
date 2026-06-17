@@ -13,7 +13,7 @@ import AnimatedButton from '../components/AnimatedButton';
 const CAROUSEL_DATA = [
   {
     src: '/1.png',
-    bg: '/bg1.png',
+    bg: '/bg1.jpeg',
     title: 'DOMOTI',
     translations: {
       uz: { name: 'Domoti Somsa', desc: 'Qarsildoq xamir, sersuv dumba yog‘i va yangi kesilgan mol go‘shti.' },
@@ -23,7 +23,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/2.png',
-    bg: '/bg2.png',
+    bg: '/bg2.jpeg',
     title: 'PESOCHNI',
     translations: {
       uz: { name: 'Pesochni Somsa (Mol go‘shti)', desc: 'Og‘izda eriydigan pesochniy xamir va mayin mol go‘shti.' },
@@ -33,7 +33,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/3.png',
-    bg: '/bg3.png',
+    bg: '/bg3.jpeg',
     title: 'TOMCHI',
     translations: {
       uz: { name: 'Tomchi Somsa', desc: 'Tandirda pishirilgan xushxo‘r va shirin qovoq.' },
@@ -43,7 +43,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/4.png',
-    bg: '/bg4.png',
+    bg: '/bg4.jpeg',
     title: 'QIYMA',
     translations: {
       uz: { name: 'Qiyma Somsa', desc: 'Kattalashtirilgan maxsus qiyma tandir somsa.' },
@@ -53,7 +53,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/5.png',
-    bg: '/bg5.png',
+    bg: '/bg5.jpeg',
     title: 'PORA',
     translations: {
       uz: { name: 'Pora Somsa', desc: 'Bahoriy ko‘katlar va vaqtida terilgan barra piyoz bilan tayyorlangan somsa.' },
@@ -63,7 +63,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/6.png',
-    bg: '/bg6.png',
+    bg: '/bg6.jpeg',
     title: 'PESOCHNI',
     translations: {
       uz: { name: 'Pesochni Somsa (Tovuq go‘shti)', desc: 'Og‘izda eriydigan pesochniy xamir va barra tovuq go‘shti.' },
@@ -73,7 +73,7 @@ const CAROUSEL_DATA = [
   },
   {
     src: '/7.png',
-    bg: '/bg7.png',
+    bg: '/bg7.jpeg',
     title: 'DOMASHNIY',
     translations: {
       uz: { name: 'Domashniy Somsa', desc: 'Bizning eng mashhur va uy sharoitida tayyorlangan retseptimiz.' },
@@ -189,31 +189,31 @@ const Home: React.FC = () => {
   const getRoleStyle = (role: string) => {
     const styles: Record<string, React.CSSProperties> = {
       center: {
-        transform: `translate3d(-50%, ${isMobile ? '-29vh' : '-12vh'}, 0) scale(${isMobile ? 2.2 : 2.5})`,
+        transform: `translate3d(-50%, ${isMobile ? '-20vh' : '-12vh'}, 0) scale(${isMobile ? 4.4 : 2.5})`,
         filter: 'blur(0px)',
         opacity: 1,
         zIndex: 30,
       },
       left: {
-        transform: `translate3d(${isMobile ? '-140%' : '-170%'}, ${isMobile ? '-5vh' : '-2vh'}, 0) scale(0.7)`,
+        transform: `translate3d(${isMobile ? '-140%' : '-170%'}, ${isMobile ? '-15vh' : '-2vh'}, 0) scale(${isMobile ? 1.05 : 0.7})`,
         filter: 'blur(1.5px)',
         opacity: 0.85,
         zIndex: 20,
       },
       right: {
-        transform: `translate3d(${isMobile ? '40%' : '70%'}, ${isMobile ? '-5vh' : '-2vh'}, 0) scale(0.7)`,
+        transform: `translate3d(${isMobile ? '40%' : '70%'}, ${isMobile ? '-15vh' : '-2vh'}, 0) scale(${isMobile ? 1.05 : 0.7})`,
         filter: 'blur(1.5px)',
         opacity: 0.85,
         zIndex: 20,
       },
       'left-2': {
-        transform: `translate3d(${isMobile ? '-220%' : '-260%'}, ${isMobile ? '-4vh' : '-1.5vh'}, 0) scale(0.5)`,
+        transform: `translate3d(${isMobile ? '-220%' : '-260%'}, ${isMobile ? '-12vh' : '-1.5vh'}, 0) scale(${isMobile ? 0.75 : 0.5})`,
         filter: 'blur(3px)',
         opacity: 0.5,
         zIndex: 10,
       },
       'right-2': {
-        transform: `translate3d(${isMobile ? '120%' : '160%'}, ${isMobile ? '-4vh' : '-1.5vh'}, 0) scale(0.5)`,
+        transform: `translate3d(${isMobile ? '120%' : '160%'}, ${isMobile ? '-12vh' : '-1.5vh'}, 0) scale(${isMobile ? 0.75 : 0.5})`,
         filter: 'blur(3px)',
         opacity: 0.5,
         zIndex: 10,
@@ -295,7 +295,7 @@ const Home: React.FC = () => {
 
       {/* ── Hero ── */}
       <section
-        className="relative w-full h-[100vh] overflow-hidden bg-[#121212] select-none"
+        className="relative w-full h-[75vh] sm:h-[100vh] overflow-hidden bg-[#121212] select-none"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         {/* Grain overlay */}
@@ -333,7 +333,7 @@ const Home: React.FC = () => {
                 className="absolute text-white transition-all duration-[650ms] ease-[cubic-bezier(0.25,1,0.5,1)] uppercase select-none font-black"
                 style={{
                   fontFamily: "'Flokison', sans-serif",
-                  fontSize: 'clamp(90px, 24vw, 380px)',
+                  fontSize: isMobile ? 'clamp(135px, 36vw, 380px)' : 'clamp(90px, 24vw, 380px)',
                   opacity: activeIndex === idx ? 0.9 : 0,
                   color: '#ffffff',
                   lineHeight: 0.8,
