@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, Filter, Loader2 } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -129,7 +129,7 @@ const Menu: React.FC = () => {
       ) : (
         <>
           {/* Menu Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, index) => (
                 <SomsaCard key={item.id} {...item} index={index} />

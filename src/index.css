@@ -39,11 +39,11 @@ body {
 }
 
 body {
-  background-color: #FFFFFF;
   color: #1A1614;
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FAF7F2;
 }
 
 /* ════════════════════════════════════════
@@ -350,7 +350,7 @@ body {
   transition: filter 0.55s ease, transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.group:hover .img-hover img {
+.img-hover:hover img {
   filter: brightness(1.06) saturate(1.04);
   transform: scale(1.05);
 }
@@ -377,45 +377,34 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* Gautammsharma Grid Background styles */
+/* Grid Background */
 .grid-wrapper {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .grid-background {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 0;
-  background-image: linear-gradient(to right, rgba(26, 22, 20, 0.14) 2px, transparent 2px),
-                    linear-gradient(to bottom, rgba(26, 22, 20, 0.14) 2px, transparent 2px);
+  background-image:
+    linear-gradient(to right, rgba(26, 22, 20, 0.14) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(26, 22, 20, 0.14) 2px, transparent 2px);
   background-size: 45px 45px;
   -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 0%, #000 70%, transparent 100%);
   mask-image: radial-gradient(ellipse 85% 75% at 50% 0%, #000 70%, transparent 100%);
   animation: grid-move 28s linear infinite;
+  will-change: background-position;
 }
 
 @keyframes grid-move {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 45px 45px;
-  }
+  from { background-position: 0 0; }
+  to   { background-position: 45px 45px; }
 }
 
-/* Override body with a beautiful milky tone */
-body {
-  background-color: #FAF7F2 !important;
-}
+
 
 /* Playful button icon animations on hover */
 .icon-1, .icon-2, .icon-3 {

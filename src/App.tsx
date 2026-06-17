@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import { FirebaseProvider } from './context/FirebaseContext';

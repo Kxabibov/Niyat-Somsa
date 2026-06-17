@@ -453,13 +453,9 @@ const Navbar: React.FC = () => {
                 )}
               </button>
               
-              {/* Menu trigger */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`p-1.5 transition-colors ${isOverlay && !isOpen
-                  ? 'text-[#1a1a1a] hover:text-[#c8a96e]'
-                  : 'text-[#1a1a1a] hover:text-[#c8a96e]'
-                  }`}
+                className="p-1.5 text-[#1a1a1a] hover:text-[#c8a96e] transition-colors"
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
               </button>

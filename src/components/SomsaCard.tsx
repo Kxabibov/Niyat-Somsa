@@ -152,7 +152,7 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative bg-white w-full max-w-3xl rounded-[1.8rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden z-10 grid grid-cols-1 md:grid-cols-2 max-h-[92vh] md:max-h-none flex flex-col md:flex-row"
+              className="relative bg-white w-full max-w-3xl rounded-[1.8rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden z-10 grid grid-cols-1 md:grid-cols-2 max-h-[92vh] md:max-h-none"
             >
               {/* Close Button */}
               <button
