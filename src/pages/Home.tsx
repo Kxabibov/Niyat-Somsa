@@ -295,32 +295,34 @@ const Home: React.FC = () => {
 
       {/* ── Hero ── */}
       <section
-        className="relative w-full h-[75vh] sm:h-[100vh] overflow-hidden bg-[#121212] select-none"
+        className="relative w-full h-[75vh] sm:h-[100vh] bg-[#121212] select-none"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
-        {/* Grain overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-40 z-[50]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='0.08' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundSize: '200px 200px',
-          }}
-        />
-
-        {/* Smooth transitioning backgrounds */}
-        <div className="absolute inset-0 z-0">
-          {CAROUSEL_DATA.map((item, idx) => (
-            <div
-              key={idx}
-              className="absolute inset-0 bg-cover bg-center transition-opacity duration-[650ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
-              style={{
-                backgroundImage: `url(${item.bg})`,
-                opacity: activeIndex === idx ? 1 : 0,
-              }}
-            />
-          ))}
-          {/* Dark overlay for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 pointer-events-none" />
+        {/* Background: grain + images — overflow-hidden scoped here only */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Grain overlay */}
+          <div
+            className="absolute inset-0 opacity-40 z-[2]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='0.08' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              backgroundSize: '200px 200px',
+            }}
+          />
+          {/* Smooth transitioning backgrounds */}
+          <div className="absolute inset-0 z-[1]">
+            {CAROUSEL_DATA.map((item, idx) => (
+              <div
+                key={idx}
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-[650ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                style={{
+                  backgroundImage: `url(${item.bg})`,
+                  opacity: activeIndex === idx ? 1 : 0,
+                }}
+              />
+            ))}
+            {/* Dark overlay for contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60" />
+          </div>
         </div>
 
         {/* Giant header container (positioned at top-[6px]) */}
