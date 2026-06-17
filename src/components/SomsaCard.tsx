@@ -60,17 +60,18 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
         <img
           src={image || undefined}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover sm:transition-transform sm:duration-700 sm:group-hover:scale-105"
           referrerPolicy="no-referrer"
+          loading="lazy"
         />
         {/* Warm gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         {/* Category badge */}
-        <div className="absolute bottom-4 left-4 px-3 py-1 bg-black/30 backdrop-blur-sm rounded-full text-[10px] font-bold text-white/95 uppercase tracking-widest">
+        <div className="absolute bottom-4 left-4 px-3 py-1 bg-black/40 rounded-full text-[10px] font-bold text-white/95 uppercase tracking-widest">
           {category}
         </div>
         {/* Rating badge */}
-        <div className="absolute top-4 right-4 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full flex items-center space-x-1 shadow-sm">
+        <div className="absolute top-4 right-4 px-2.5 py-1 bg-white/90 rounded-full flex items-center space-x-1 shadow-sm">
           <Star size={11} className="fill-[#c8a96e] text-[#c8a96e]" />
           <span className="text-[10px] font-bold text-[#1a1a1a]">{rating}</span>
         </div>
@@ -121,12 +122,15 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
       {isStacked ? (
         cardContent
       ) : (
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 30 }}
+      <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+          transition={{
+            duration: 0.45,
+            delay: Math.min(index, 3) * 0.07,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
           className="h-full"
         >
           {cardContent}

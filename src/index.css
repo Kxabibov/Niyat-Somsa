@@ -404,6 +404,26 @@ body {
   to   { background-position: 45px 45px; }
 }
 
+/* ── Mobile performance: disable heavy animations ── */
+@media (hover: none) {
+  /* Stop the grid background animation entirely on touch devices */
+  .grid-background {
+    animation: none;
+    will-change: auto;
+  }
+
+  /* Disable hover-lift (touch has no hover) */
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Faster transitions feel snappier on mobile */
+  .hover-lift {
+    transition: none;
+  }
+}
+
 
 
 /* Playful button icon animations on hover */

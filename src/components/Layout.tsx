@@ -14,13 +14,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const isHome = location.pathname === '/';
 
   useEffect(() => {
+    // Lenis smooth scroll is desktop-only — on touch devices native scroll is faster
+    if (window.matchMedia('(hover: none)').matches) return;
+
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth exponential ease-out
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 
-    // Save lenis instance to window object so other components can access it
     (window as any).lenisInstance = lenis;
 
     let rafId: number;
@@ -28,7 +30,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
-
     rafId = requestAnimationFrame(raf);
 
     return () => {

@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Loader2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useSearchParams } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import SectionHeader from '../components/SectionHeader';
 import SomsaCard from '../components/SomsaCard';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
@@ -130,7 +130,7 @@ const Menu: React.FC = () => {
         <>
           {/* Menu Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="sync">
               {filteredItems.map((item, index) => (
                 <SomsaCard key={item.id} {...item} index={index} />
               ))}
