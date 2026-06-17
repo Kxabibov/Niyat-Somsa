@@ -404,23 +404,33 @@ body {
   to   { background-position: 45px 45px; }
 }
 
-/* ── Mobile performance: disable heavy animations ── */
+/* ── Mobile performance: disable heavy animations & fix layout ── */
 @media (hover: none) {
-  /* Stop the grid background animation entirely on touch devices */
+  /* Stop the grid background animation on touch devices */
   .grid-background {
     animation: none;
     will-change: auto;
   }
 
-  /* Disable hover-lift (touch has no hover) */
+  /* Disable hover-lift (touch has no hover state) */
   .hover-lift:hover {
-    transform: none;
+    transform: translateZ(0); /* keep GPU layer, just no lift */
     box-shadow: none;
   }
-
-  /* Faster transitions feel snappier on mobile */
   .hover-lift {
     transition: none;
+  }
+
+  /* Prevent horizontal overflow glitch on mobile */
+  body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Contain layout recalculations to individual cards */
+  .hover-lift {
+    contain: layout style;
+    transform: translateZ(0);
   }
 }
 

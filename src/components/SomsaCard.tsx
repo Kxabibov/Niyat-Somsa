@@ -51,8 +51,8 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
 
   const cardContent = (
     <div
-      className={`${isStacked ? '' : 'hover-lift'} group bg-white rounded-3xl overflow-hidden border border-gray-100/80 flex flex-col h-full cursor-pointer`}
-      style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+      className={`${isStacked ? '' : 'hover-lift'} group bg-white rounded-3xl overflow-hidden border border-gray-100/80 flex flex-col cursor-pointer`}
+      style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transform: 'translateZ(0)', willChange: 'auto' }}
       onClick={() => !isStacked && setModalOpen(true)}
     >
       {/* Image */}
@@ -78,7 +78,7 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
       </div>
 
       {/* Body */}
-      <div className="p-3 sm:p-6 space-y-2 sm:space-y-4 flex-grow flex flex-col justify-between">
+      <div className="p-3 sm:p-6 space-y-2 sm:space-y-4 flex flex-col justify-between">
         <div className="space-y-1">
           <h4 className="text-sm sm:text-lg font-bold text-[#1a1a1a] font-traditional leading-tight truncate">{name}</h4>
           <p className="text-xs sm:text-sm font-bold text-accent">{price}</p>
@@ -131,7 +131,6 @@ const SomsaCard: React.FC<SomsaCardProps> = ({
             delay: Math.min(index, 3) * 0.07,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="h-full"
         >
           {cardContent}
         </motion.div>

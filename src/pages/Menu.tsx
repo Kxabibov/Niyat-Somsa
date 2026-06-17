@@ -129,7 +129,10 @@ const Menu: React.FC = () => {
       ) : (
         <>
           {/* Menu Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+          <div
+            className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 items-start"
+            style={{ WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}
+          >
             <AnimatePresence mode="sync">
               {filteredItems.map((item, index) => (
                 <SomsaCard key={item.id} {...item} index={index} />
