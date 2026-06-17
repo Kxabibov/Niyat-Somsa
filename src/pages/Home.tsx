@@ -385,7 +385,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Bottom row: glassy description box on the left, "Menyuni ko‘rish" link on the right, aligned middle (moved up) */}
-        <div className="absolute bottom-26 sm:bottom-38 inset-x-3 sm:inset-x-16 z-[45] flex items-center justify-between pointer-events-none">
+        <div className="absolute bottom-4 sm:bottom-38 inset-x-3 sm:inset-x-16 z-[45] flex items-center justify-between pointer-events-none">
           {/* Glassy description box (length lessened, min-height & responsive padding for perfect mobile fit) */}
           <div className="pointer-events-auto max-w-[62vw] sm:max-w-[340px] w-full">
             <AnimatePresence mode="wait">
